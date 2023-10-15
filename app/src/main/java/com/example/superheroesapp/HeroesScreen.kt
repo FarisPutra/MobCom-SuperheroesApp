@@ -113,21 +113,21 @@ fun HeroesList(
         LazyColumn(contentPadding = contentPadding) {
             itemsIndexed(heroes) {
                 index,
-                hero ->
-                    HeroListItem(
-                        hero = hero,
-                        modifier = Modifier
-                            .padding(horizontal = 16.dp, vertical = 8.dp)
-                            // Animate each list item to slide in vertically
-                            .animateEnterExit(
-                                enter = slideInVertically(
-                                    animationSpec = spring(
-                                        stiffness = Spring.StiffnessLow,
-                                        dampingRatio = Spring.DampingRatioLowBouncy
-                                    ), initialOffsetY = { it * (index + 1) } // Staggered entrance
-                                )
+                hero -> HeroListItem(
+                    hero = hero,
+                    modifier = Modifier
+                        .padding(horizontal = 16.dp, vertical = 8.dp)
+                        // Animate each list item to slide in vertically
+                        .animateEnterExit(
+                            enter = slideInVertically(
+                                animationSpec = spring(
+                                    stiffness = Spring.StiffnessLow,
+                                    dampingRatio = Spring.DampingRatioLowBouncy
+                                ),
+                                initialOffsetY = { it * (index + 1) } // Staggered entrance
                             )
-                    )
+                        )
+                )
             }
         }
     }
